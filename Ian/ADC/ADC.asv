@@ -12,8 +12,8 @@ logfile = fopen('logUsonic.log');
 M = textscan(logfile,'%s');
 fclose(logfile);
 
-data = hex2dec(M{1,1});
-clear M;
+//data = hex2dec(M{1,1});
+//clear M;
         
 %% Raw Data
 
