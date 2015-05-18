@@ -8,12 +8,18 @@ fsig1 = 39.0625E3;
 
 %% Import log data
 
-logfile = fopen('logUsonic.log');
+logfile = fopen('.\logs\logGood2.log');
 M = textscan(logfile,'%s');
 fclose(logfile);
 
-data = hex2dec(M{1,1});
+dataBin = hexToBinaryVector(M{1,1});
 clear M;
+if (size(dataBin) > 12),
+    data = bi2de(dataBin(:, end-11:end), 'left-msb');
+else
+    data = bi2de(dataBin, 'left-msb');
+end
+clear dataBin;
         
 %% Raw Data
 
@@ -40,12 +46,12 @@ data_cond = filtfilt(b, a, data);
 %% Plot conditioned data
 
 y_cond = data_cond ./ 4096 * 5;
-
-figure;
-plot(x_axis, y_cond, '-r');
-title('Conditioned Signal', 'fontweight', 'bold');
-xlabel('T (s)');
-ylabel('Voltage (V)');
+% 
+% figure;
+% plot(x_axis, y_cond, '-r');
+% title('Conditioned Signal', 'fontweight', 'bold');
+% xlabel('T (s)');
+% ylabel('Voltage (V)');
 
 %% FFT
 
@@ -73,14 +79,14 @@ ylabel('PSD');
 
 %% Bandpass f1 +- 1kHz
 
-fn1 = [fsig1 - 1E3, fsig1 + 1E3] / Fs;
-Wn1 = 2*pi*fn1;
-[B1, A1] = butter(1,Wn1 );
-figure;
-freqz(B1,A1);
-title('Transfer Function of 39.0625kHz Bandpass Filter', 'fontweight', 'bold');
-dataOut1 = filter(B1,A1,y_cond);
-
-figure;
-plot(x_axis, dataOut1);
-title('39.0625kHz Bandpassed Signal', 'fontweight', 'bold');
+% fn1 = [fsig1 - 1E3, fsig1 + 1E3] / Fs;
+% Wn1 = 2*pi*fn1;
+% [B1, A1] = butter(1,Wn1 );
+% figure;
+% freqz(B1,A1);
+% title('Transfer Function of 39.0625kHz Bandpass Filter', 'fontweight', 'bold');
+% dataOut1 = filter(B1,A1,y_cond);
+% 
+% figure;
+% plot(x_axis, dataOut1);
+% title('39.0625kHz Bandpassed Signal', 'fontweight', 'bold');
