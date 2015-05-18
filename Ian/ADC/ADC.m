@@ -8,7 +8,7 @@ fsig1 = 39.0625E3;
 
 %% Import log data
 
-logfile = fopen('.\logs\logGood2.log');
+logfile = fopen('.\logs\logUsonicBurstNoFilter.log');
 M = textscan(logfile,'%s');
 fclose(logfile);
 
