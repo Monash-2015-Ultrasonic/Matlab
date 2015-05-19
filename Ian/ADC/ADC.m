@@ -2,13 +2,13 @@ clear; close all; clc;
 
 %% Set up environment
 
-Fs = 312.5E3*2;
+Fs = 312.5E3;
 Ts = 1/Fs;
 fsig1 = 39.0625E3;
 
 %% Import log data
 
-logfile = fopen('.\logs\logUsonicBurstNoFilter.log');
+logfile = fopen('.\logs\logBurstTest2.log');
 M = textscan(logfile,'%s');
 fclose(logfile);
 
@@ -46,12 +46,12 @@ data_cond = filtfilt(b, a, data);
 %% Plot conditioned data
 
 y_cond = data_cond ./ 4096 * 5;
-% 
-% figure;
-% plot(x_axis, y_cond, '-r');
-% title('Conditioned Signal', 'fontweight', 'bold');
-% xlabel('T (s)');
-% ylabel('Voltage (V)');
+
+figure;
+plot(x_axis, y_cond, '-r');
+title('Conditioned Signal', 'fontweight', 'bold');
+xlabel('T (s)');
+ylabel('Voltage (V)');
 
 %% FFT
 
