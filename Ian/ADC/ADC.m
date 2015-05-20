@@ -8,7 +8,7 @@ fsig1 = 39.0625E3;
 
 %% Import log data
 
-logfile = fopen('.\logs\logBurstTest2.log');
+logfile = fopen('.\logs\logUsonic10cmLPFextragnd.log');
 M = textscan(logfile,'%s');
 fclose(logfile);
 
