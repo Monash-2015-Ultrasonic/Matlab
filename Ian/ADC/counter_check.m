@@ -4,11 +4,10 @@ clear; close all; clc;
 
 Fs = 312.5E3;
 Ts = 1/Fs;
-fsig1 = 39.0625E3;
 
 %% Import log data
 
-logfile = fopen('.\logs\CounterCheck\logCounterManual.log');
+logfile = fopen('.\logs\CounterCheck\Auto\logAutoADCtest.log');
 M = textscan(logfile,'%s');
 fclose(logfile);
 
