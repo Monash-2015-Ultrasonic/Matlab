@@ -2,23 +2,28 @@ clear; close all; clc;
 
 %% Set up environment
 
-Fs = 625E3;
+Fs = 312.5E3;
 Ts = 1/Fs;
 fsig1 = 39.0625E3;
 
 %% Import log data
 
-logfile = fopen('.\logs\System\Square\625kHz\logSystemSquareRAW.log');
+logfile = fopen('./logs/System/Square/312k5Hz/logSystemSquareRAW.log');
 M = textscan(logfile,'%s');
 fclose(logfile);
 
-dataBin = hexToBinaryVector(M{1,1});
-clear M;
-if (size(dataBin) > 12),
-    data = bi2de(dataBin(:, end-11:end), 'left-msb');
-else
-    data = bi2de(dataBin, 'left-msb');
+if (ispc),
+    dataBin = hexToBinaryVector(M{1,1});
+    if (size(dataBin) > 12),
+        data = bi2de(dataBin(:, end-11:end), 'left-msb');
+    else
+        data = bi2de(dataBin, 'left-msb');
+    end
+elseif (isunix),
+    dataBin = dec2bin(hex2dec(M{1,1}), 16);
+    data = bin2dec(dataBin(:, end-11:end));
 end
+clear M;
 clear dataBin;
         
 %% Raw Data
@@ -70,7 +75,7 @@ NFFT = 2^nextpow2(length(y_cond));
 % Single-sided PSD:
 X = fft(y_cond, NFFT);	 	 
 Px = X .* conj(X) / (NFFT*length(y_cond)); %Power of each freq components	 	 
-fVals = Fs * (0:NFFT/2-1) / NFFT;	 	 
+fVals = Fs/2 * (0:NFFT/2-1) / NFFT;	 	 
 figure;
 plot(fVals,Px(1:NFFT/2),'-*r','LineSmoothing','on','LineWidth',1);	 	 
 title('One Sided Power Spectral Density of Conditioned Signal', 'fontweight', 'bold');	 	 
