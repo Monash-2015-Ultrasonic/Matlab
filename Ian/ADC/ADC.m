@@ -8,7 +8,7 @@ fsig1 = 39.0625E3;
 
 %% Import log data
 
-logfile = fopen('./logs/System/Square/312k5Hz/logSystemSquareRAW.log');
+logfile = fopen('./logs/System/SingleFrame/625kHz/datalog.log');
 M = textscan(logfile,'%s');
 fclose(logfile);
 
