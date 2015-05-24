@@ -2,12 +2,12 @@ clear; close all; clc;
 
 %% Set up environment
 
-Fs = 40E6 / 2^7;
+Fs = 40E6 / 2^12;
 Ts = 1/Fs;
 
 %% Import log data
 
-logfile = fopen('.\logs\CounterCheck\Auto\Fast\logtest.log');
+logfile = fopen('.\logs\CounterCheck\Auto\Fast\teraterm2.log');
 M = textscan(logfile,'%s');
 fclose(logfile);
 
@@ -38,10 +38,7 @@ y_raw = data;
 %% Plot Raw Data
 
 figure;
-hold on;
-plot(x_axis, y_raw, '-r');
-plot(x_axis(test), y_raw(test), '*b');
+plot(x_axis, y_raw, '-r', x_axis(test), y_raw(test), '*b');
 xlabel('T (s)');
 ylabel('Count');
 title('Counter', 'fontweight', 'bold');
-hold off;

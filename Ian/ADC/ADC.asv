@@ -8,8 +8,7 @@ fsig1 = 40E6 / 2^10;
 
 %% Import log data
 
-%logfile = fopen('./logs/System/Burst/625kHz/logLPFReflector5cm.log');
-logfile = fopen('./logs/System/Square/625kHz/Burst/logBurst.log');
+logfile = fopen('./logs/System/Burst/625kHz/logLPFReflector5cm.log');
 M = textscan(logfile,'%s');
 fclose(logfile);
 
