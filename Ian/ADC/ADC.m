@@ -8,7 +8,7 @@ fsig1 = 40E6 / 2^10;
 
 %% Import log data
 
-logfile = fopen('./logs/System/Burst/625kHz/logLPFReflector10cm2.log');
+logfile = fopen('./logs/System/Square/625kHz/Burst/logBurst2.log');
 %logfile = fopen('./logs/System/Square/625kHz/Burst/logBurst.log');
 M = textscan(logfile,'%s');
 fclose(logfile);
@@ -74,8 +74,8 @@ NFFT = 2^nextpow2(length(y_cond));
 % ylabel('|Y(f)|');
 
 % Single-sided PSD:
-X = fft(y_raw, NFFT);	 	 
-Px = X .* conj(X) / (NFFT*length(y_raw)); %Power of each freq components	 	 
+X = fft(data_cond, NFFT);	 	 
+Px = X .* conj(X) / (NFFT*length(data_cond)); %Power of each freq components	 	 
 fVals = Fs/2 * (0:NFFT/2-1) / NFFT;	 	 
 figure;
 plot(fVals,Px(1:NFFT/2),'-*r','LineSmoothing','on','LineWidth',1);	 	 
