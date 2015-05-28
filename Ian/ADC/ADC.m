@@ -8,10 +8,11 @@ fsig1 = 40E6 / 2^10;
 
 %% Import log data
 
-logfile = fopen('./logs/System/Burst/625kHz/logBurstBPF25mm.log');
+logfile = fopen('./logs/System/Burst/625kHz/logBurstReflectorBPF5cm.log');
 %logfile = fopen('./logs/System/Square/625kHz/Burst/logBurst.log');
 M = textscan(logfile,'%s');
 fclose(logfile);
+clear logfile;
 
 if (ispc),
     dataBin = hexToBinaryVector(M{1,1});
@@ -30,6 +31,7 @@ clear dataBin;
 %% Raw Data
 
 x_axis = (0:1:length(data)-1) * Ts;
+x_axis = x_axis';
 y_raw = data ./ 4096 * 5;
 
 %% Plot Raw Data
@@ -40,7 +42,7 @@ xlabel('T (s)');
 ylabel('Voltage (V)');
 title('Raw Signal', 'fontweight', 'bold');
 
-clear y_raw;
+%clear y_raw;
 
 %% Signal conditioning - Remove DC Bias
 
@@ -63,7 +65,8 @@ ylabel('Voltage (V)');
 
 clear data;
 clear data_cond;
-
+clear a;
+clear b;
 %% FFT
 
 NFFT = 2^nextpow2(length(y_cond));
@@ -91,23 +94,26 @@ ylabel('PSD');
 clear X; 
 clear Px;
 clear fVals;
-%% Bandpass f1 +- 1kHz
+clear NFFT;
+%% Template
 
-fn1 = [fsig1 - 2E3, fsig1 + 2E3] / Fs;
+x_sine = 0:Ts/fsig1:32/fsig1;
+y_sine = [-2.5*sin(2*pi*fsig1*x_sine) + 2.5];
+%figure;
+%plot(x_sine, y_sine);
+
+fn1 = [10E3, 48E3] / Fs;
 Wn1 = 2*pi*fn1;
-[B1, A1] = butter(1,Wn1, 'bandpass');
+[B1, A1] = butter(2,Wn1, 'bandpass');
 %figure;
 %freqz(B1,A1);
 %title('Transfer Function of 39.0625kHz Bandpass Filter', 'fontweight', 'bold');
 
-x_sine = 0:Ts/fsig1:1/fsig1;
-y_sine = 2.5*sin(2*pi*fsig1*x_sine) + 2.5;
-%figure;
-%plot(x_sine, y_sine);
-
-%dataOut1 = filter(B1,A1,y_cond);
+clear Wn1;
+clear fn1;
 
 y_sine_cond = filter(B1, A1, y_sine);
+y_sine_cond = y_sine_cond';
 %figure;
 %plot(x_sine, y_sine_cond);
 
@@ -152,17 +158,27 @@ clear A1;
 % display(matches);
 
 
-template = fliplr(y_sine_cond);
-y_match = filter(template, 1, y_cond);
-y_match = y_match ./ max(y_match);
+template = flipud(y_sine_cond);
+y_match = filter(template, 1, y_raw);
 
 clear y_cond;
 clear y_sine;
 clear template;
 
-thresh = 0.9878;
+u = y_sine_cond.'*y_sine_cond;
+
+clear y_sine_cond;
+
+thresh = 0.5;
 %u = y_sine_cond.'*y_sine_cond;
-matches = (y_match >= thresh);
+matches = x_axis(y_match >= thresh*u);
+
+clear u;
+clear thresh;
+
 figure;
 %plot(x_axis, y_match, '-b', x_axis(matches), y_match(matches), 'or');
-plot(x_axis(matches), y_match(matches), 'or', x_axis, y_match, '-b');
+subplot(2,1,1);
+plot(x_axis, y_raw, '-b', x_axis(matches), y_raw(matches), 'or');
+subplot(2,1,2);
+plot(x_axis, y_match, '-b', x_axis(matches), y_match(matches), 'or');
