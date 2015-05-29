@@ -67,29 +67,29 @@ clear data;
 clear data_cond;
 clear a;
 clear b;
-%% FFT
+%% FFT 
 
 NFFT = 2^nextpow2(length(y_cond));
 
 % Single-sided Amplitude Spectrum:
-% Y = fft(data_cond, NFFT) / length(data_cond);
-% f = Fs/2 * linspace(0,1,NFFT/2+1);
-% 
-% figure;
-% plot(f, 2*abs(Y(1:NFFT/2+1)));
-% title('Single-sided Amplitude Spectrum of Raw Signal', 'fontweight', 'bold');
-% xlabel('Frequency (Hz)');
-% ylabel('|Y(f)|');
+Y = fft(y_cond, NFFT) / length(y_cond);
+f = Fs/2 * linspace(0,1,NFFT/2+1);
 
-% Single-sided PSD:
-X = fft(y_cond, NFFT);	 	 
-Px = X .* conj(X) / (NFFT*length(y_cond)); %Power of each freq components	 	 
-fVals = Fs/2 * (0:NFFT/2-1) / NFFT;	 	 
 figure;
-plot(fVals,Px(1:NFFT/2),'-*r','LineSmoothing','on','LineWidth',1);	 	 
-title('One Sided Power Spectral Density of Conditioned Signal', 'fontweight', 'bold');	 	 
-xlabel('Frequency (Hz)')	 	 
-ylabel('PSD');
+plot(f, 2*abs(Y(1:NFFT/2+1)));
+title('Single-sided Amplitude Spectrum of Conditioned Signal', 'fontweight', 'bold');
+xlabel('Frequency (Hz)');
+ylabel('|Y(f)|');
+
+% % Single-sided PSD:
+% X = fft(y_cond, NFFT);	 	 
+% Px = X .* conj(X) / (NFFT*length(y_cond)); %Power of each freq components	 	 
+% fVals = Fs/2 * (0:NFFT/2-1) / NFFT;	 	 
+% figure;
+% plot(fVals,Px(1:NFFT/2),'-*r','LineSmoothing','on','LineWidth',1);	 	 
+% title('One Sided Power Spectral Density of Conditioned Signal', 'fontweight', 'bold');	 	 
+% xlabel('Frequency (Hz)')	 	 
+% ylabel('PSD');
 
 clear X; 
 clear Px;
@@ -125,7 +125,7 @@ clear A1;
 %plot(x_axis, dataOut1);
 %title('39.0625kHz Bandpassed Signal', 'fontweight', 'bold');
 
-%% Matched filter
+%% Matched filter + LPF
 
 
 % % A template is given
