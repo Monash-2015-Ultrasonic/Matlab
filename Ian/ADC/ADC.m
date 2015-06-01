@@ -165,7 +165,7 @@ clear y_cond;
 clear y_sine;
 clear template;
 
-u = y_sine_cond.'*y_sine_cond;
+u = y_raw.'*y_raw;
 
 clear y_sine_cond;
 
