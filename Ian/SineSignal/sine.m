@@ -34,7 +34,7 @@ ylabel('|Y(f)|');
 % Single-sided PSD:
 X = fft(y, NFFT);	 	 
 Px = X .* conj(X) / (NFFT*length(y)); %Power of each freq components	 	 
-fVals = Fs/2 * (0:NFFT/2-1) / NFFT;	 	 
+fVals = Fs * (0:NFFT/2-1) / NFFT;	 	 
 figure;
 plot(fVals,Px(1:NFFT/2),'-*r','LineSmoothing','on','LineWidth',1);	 	 
 title('One Sided Power Spectral Density of Sine', 'fontweight', 'bold');	 	 

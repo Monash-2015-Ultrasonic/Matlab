@@ -43,7 +43,7 @@ clear data;
 
 %% Sliding FFT
 
-ttemplate = 0:Ts:tsig;
+ttemplate = 0:Ts:32*tsig;
 Itemplate = cos(2*pi*fsig*ttemplate);
 Qtemplate = -sin(2*pi*fsig*ttemplate);
 
@@ -102,11 +102,18 @@ Qtemplate = -sin(2*pi*fsig*ttemplate);
 
 %%
 
-fcBP = [10E3 48E3]/Fs;
-[B, A] = butter(1, fcBP/(Fs/2));
+%fcBP = [10E3 48E3] / (Fs/2);
+fcBP = [fsig-5E3, fsig+5E3] / (Fs/2);
+[B, A] = butter(1, fcBP);
 
 Qtemplate_cond = filter(B, A, Qtemplate)';
 Itemplate_cond = filter(B, A, Itemplate)';
+
+% figure;
+% subplot(211);
+% plot(Qtemplate_cond);
+% subplot(212);
+% plot(Itemplate_cond);
 
 Qtemplate_cond = flipud(Qtemplate_cond);
 Itemplate_cond = flipud(Itemplate_cond);
@@ -117,7 +124,7 @@ y_Imatch = filter(Itemplate_cond, 1, y_raw);
 y_Qmatch = y_Qmatch / max(y_Qmatch);
 y_Imatch = y_Imatch / max(y_Imatch);
 
-thresh = 0.98;
+thresh = 0.9;
 
 Qmatches = (y_Qmatch >= thresh);
 Imatches = (y_Imatch >= thresh);

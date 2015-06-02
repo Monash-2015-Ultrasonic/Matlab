@@ -107,7 +107,7 @@ y_sine = 2.5*sin(2*pi*fsig*x_sine)+2.5;
 
 %fn1 = [10E3, 48E3] / (Fs/2);
 fn1 = [fsig-BW, fsig+BW] / (Fs/2);
-[B1, A1] = butter(1,fn1, 'bandpass');
+[B1, A1] = butter(2,fn1, 'bandpass');
 %figure;
 %freqz(B1,A1);
 %title('Transfer Function of 39.0625kHz Bandpass Filter', 'fontweight', 'bold');
@@ -164,21 +164,19 @@ clear A1;
 template = flipud(y_sine_cond);
 y_match = filter(template, 1, y_raw);
 
-y_match = y_match / max(y_match);
-
 clear y_cond;
 clear y_sine;
 clear template;
 
-%u = y_raw.'*y_raw;
+u = y_raw.'*y_raw;
 
 clear y_sine_cond;
 
-thresh = 0.9;
+thresh = 0.5;
 %u = y_sine_cond.'*y_sine_cond;
-matches = (y_match >= thresh);
+matches = (y_match >= thresh*u);
 
-%clear u;
+clear u;
 clear thresh;
 
 figure;
