@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:m="http://schemas.microsoft.com/office/2004/12/omml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>UndersamplingGUI Help</title>
+<style type="text/css">
+ p.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	}
+p.MsoListParagraphCxSpFirst
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	}
+p.MsoListParagraphCxSpMiddle
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	}
+p.MsoListParagraphCxSpLast
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:.5in;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	}
+.style2 {
+				text-decoration: underline;
+				font-size: large;
+}
+</style>
+</head>
+
+<body>
+
+<p class="MsoNormal" style="font-family: 'Berlin Sans FB'; font-size: medium; text-align: center"><u>
+GaborFilterDesighnNik Help.<o:p></o:p></u></p>
+<p class="MsoNormal">This GUI both presents and test the Undersampling 
+fundamentals. The user sets the parameters, afterwards he can see both the 
+spectra plot, and the list of undersamlping rates. </p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="style2"><strong>Parameters list panel</strong></p>
+<p>Defines the scenario under investigation.</p>
+<ul>
+				<li><strong>Carrier frequency</strong>- the signal modulation 
+				frequency. Assumed to be much higher then </li>
+				<li><strong>Channel BW</strong>- channel bandwidth. Thus the 
+				channel occupies frequencies [Carrier frequency-BW/2:Carrier 
+				frequency+BW/2] .</li>
+				<li><strong>Sample frequency</strong>- a frequency chosen by the 
+				used to sample the signal with. Will be Green when no aliasing 
+				occurs and Red otherwise.</li>
+				<li><strong>N-Freq. Resolution</strong>- number of points used 
+				to represent the spectra. Higher values will result in more 
+				precise graph, but will demand more resources and slow down the 
+				program.</li>
+</ul>
+<p>&nbsp;</p>
+<p class="style2"><strong>Active plots list panel</strong></p>
+<p>Defines the spectra plots to be presented.</p>
+<ul>
+				<li><strong>Original Spectra</strong>- presents the initial 
+				spectra we wish to sample. Fully defined by <strong>Carrier 
+				frequency</strong> and <strong>Channel BW</strong> parameters (<strong>N-Freq. 
+				Resolution</strong> defines plot resolution).</li>
+				<li><strong>Resampled Spectra- wide</strong>- presents the 
+				spectra after sampling, by <strong>Sample frequency</strong>, 
+				which as you probably know causes creation of original signal 
+				copies (images) shifted by whole <strong>Sample frequency</strong> 
+				multiplications. Thus, this graph is actually a straightforward 
+				means to see if <a href="http://en.wikipedia.org/wiki/Aliasing">
+				aliasing</a> occurs, without using the undersampling condition. 
+				The red striped graph presents the limits of Nyquist BW.</li>
+				<li><strong>Resampled Spectra- tight</strong>- presents the 
+				spectra after sampling inside the limits of Nyquist BW.Thus, 
+				this graph is actually a standalone version of <strong>Resampled 
+				Spectra- wide</strong> graph inside its red limits. </li>
+</ul>
+<p>&nbsp;</p>
+<p><strong><span class="style2">Undersampling rates table</span></strong></p>
+<p>The table presents all <a href="http://en.wikipedia.org/wiki/Undersampling">
+undersampling rates</a> that will allow proper sampling* without aliasing. </p>
+<p><strong>Round table</strong>- rounds the table values to nearest integers, 
+when enabled. While resulting in a more readable table, this however introduces 
+inacuraties.</p>
+<p>&nbsp;</p>
+<p class="MsoNormal" style="text-decoration: underline"><strong>Notes.</strong></p>
+<p class="MsoNormal">* Note that in some cases sampling shifts signal spectra 
+from left to right, which has to be taken care of, in order to prevent signal 
+coruption. This will be clearly seen in <strong>Resampled Spectra- tight</strong>.</p>
+<p class="MsoNormal">** Sometimes it is hard to see from the graphs, whether 
+aliasing occurs. Check <strong>Sample frequency </strong>color, or increase
+<strong>N-Freq. Resolution</strong>.</p>
+
+</body>
+
+</html>

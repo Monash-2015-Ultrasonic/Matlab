@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:m="http://schemas.microsoft.com/office/2004/12/omml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+<meta http-equiv="Content-Language" content="en-us" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>UndersamplingGUI About page</title>
+<style type="text/css">
+div.WordSection1
+	{page:WordSection1;}
+ p
+	{margin-right:0in;
+	margin-left:0in;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	}
+ul
+	{margin-bottom:0in;}
+ li.MsoNormal
+	{margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+					margin-left: 0in;
+				margin-right: 0in;
+				margin-top: 0in;
+}
+ p.MsoNormal
+	{margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+					margin-left: 0in;
+				margin-right: 0in;
+				margin-top: 0in;
+}
+p.MsoListParagraphCxSpFirst
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	}
+p.MsoListParagraphCxSpMiddle
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	}
+p.MsoListParagraphCxSpLast
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	}
+.style1 {
+				text-decoration: underline;
+				text-align: center;
+				font-family: "Berlin Sans FB";
+}
+.style4 {
+				font-family: "Times New Roman", Times, serif;
+				font-size: medium;
+}
+.style5 {
+				font-family: "Times New Roman", Times, serif;
+				font-size: medium;
+				text-decoration: underline;
+}
+.style6 {
+				text-decoration: underline;
+}
+</style>
+</head>
+
+<body>
+
+<div class="WordSection1">
+				<p class="style1">UndersamplingGUI About page</p>
+				<p class="style4">
+				This GUI was designed to help users to better understand the
+				<a href="http://en.wikipedia.org/wiki/Undersampling">
+				Undersampling/Bandpass Sampling</a> technique. While you&#39;re 
+				urged to follow the above link, to better understand this topic, 
+				a brief explanation follows:</p>
+				<p class="style4">
+				All of us, dealing with
+				<a href="http://en.wikipedia.org/wiki/Signal_processing">signal 
+				processing</a> are familiar with the
+				<a href="http://en.wikipedia.org/wiki/Sampling_theorem">
+				Nyquist–Shannon sampling theorem</a>. According to it, in order 
+				to achieve proper sampling (and avoid
+				<a href="http://en.wikipedia.org/wiki/Aliasing">aliasing</a>) 
+				the sampling&nbsp; frequency must be at least two times the
+				<a title="Bandwidth (signal processing)" href="http://en.wikipedia.org/wiki/Bandwidth_(signal_processing%2529">
+				bandwidth</a> of a
+				<a class="mw-redirect" title="Bandlimited" href="http://en.wikipedia.org/wiki/Bandlimited">
+				bandlimited</a> signal. </p>
+				<p class="style4">
+				From my experience most engineers tend to neglect the fact that
+				<a href="http://en.wikipedia.org/wiki/Harry_Nyquist">Harry 
+				Nyquist</a> theorem relates to <strong>Bandlimited</strong> 
+				signal, while keeping in mind just that in order to properly 
+				sample a signal with highest frequency <em>f&nbsp; </em>the 
+				sampling rate should be at least<em> 2f.</em> So do we need 
+				11GHz sampling frequency to work with Wi-Fi? And in case of
+				<a href="http://en.wikipedia.org/wiki/Wireless_Gigabit_Alliance">
+				WiGig</a> ~60 [GHz] signal we will need 120 [GHz] sampling rate? 
+				Fortunately <span class="style6">this is not the case</span>. In 
+				case of a signal whose Bandwidth in much lower than it&#39;s 
+				frequency&nbsp; <em>BW/f &lt;&lt; 1</em> we can sample it with 
+				frequencies much lower than
+				<a href="http://en.wikipedia.org/wiki/Nyquist_rate">Nyquist rate</a>. 
+				Actually we can sometimes achieve sample rate of about 2BW 
+				which, in case of WiGig signal will be about 3 [GHz instead of 
+				120 [GHz].</p>
+				<p class="style4">See <a href="UndersamplingGUIHelp.htm">Help</a> for GUI 
+				usage instructions. You are more <span class="SpellE">then</span> 
+				welcome to <span class="GramE">comment,</span> reports issues 
+				and ask for features you consider interesting.</p>
+				<p class="style4">Hope you will find this useful,</p>
+				<p>&nbsp;<span class="style4"><a href="http://www.mathworks.com/matlabcentral/fileexchange/authors/114017"><span class="GramE">Nikolay</span></a><span class="GramE">.</span></span></p>
+				<p>&nbsp;</p>
+				<p class="style5">Version info:</p>
+				<p class="style4">Version No&#39;: 1.03&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				Release date: 25/03/2011</p>
+				<p class="style4">Changes list:</p>
+				<ul type="disc">
+								<li style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto; mso-list: l0 level1 lfo1; tab-stops: list .5in" class="MsoNormal">
+								<p class="style4">First version released to 
+								public</p>
+								</li>
+				</ul>
+				<p style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto" class="MsoNormal">
+				<span style="mso-fareast-font-family: 'Times New Roman'"><o:p>&nbsp;</o:p></span></p>
+</div>
+
+</body>
+
+</html>
