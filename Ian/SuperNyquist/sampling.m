@@ -2,7 +2,6 @@ clear; close all; clc;
 
 %%
 
-
 f1 = 24E3;
 f2 = 40E6 / 2^10;
 f3 = 1E6;
@@ -20,16 +19,23 @@ plot(t,y);
 
 %%
 
-Fs = 10E3;
+Fs = 160E3;
 %Ts = 1/Fs;
 fsig = 40E6 / 2^10;
 
-fc = [fsig-0.5E3, fsig+0.5E3];
+fc = [fsig-0.5E3, fsig+0.5E3] / Fs;
+fs = [35E3, 42E3] / Fs;
+Rc = 3;
+Rs = 40;
+[n, Wn] = buttord(fc, fs, Rc, Rs);
+[B, A] = butter(n, Wn);
+freqz(B, A, 128, 80000);
+
+
+
 %fcn = fc / (Fs/2);
 wc = 2*pi*fc;
-[B, A] = butter(1, wc/(2*pi*Fs/2), 's');
-
-%%freqz(xcorr(B,B), xcorr(A,A));
+[B, A] = butter(2, wc, 'bandpass', 's');
 
 y_cond = filter(B, A, y);
 
