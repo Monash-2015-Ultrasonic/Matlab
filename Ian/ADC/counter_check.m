@@ -2,12 +2,13 @@ clear; close all; clc;
 
 %% Set up environment
 
-Fs = 40E6 / 2^6;
+%Fs = 40E6 / 2^6;
+Fs = 65E6 / 2^10;
 Ts = 1/Fs;
 
 %% Import log data
 
-logfile = fopen('.\logs\CounterCheck\Auto\Fast\logtest625kHzSPIFast.log');
+logfile = fopen('.\logs\CounterCheck\Auto\Slow\log63kHz.log');
 M = textscan(logfile,'%s');
 fclose(logfile);
 
