@@ -8,7 +8,7 @@ Ts = 1/Fs;
 
 %% Import log data
 
-logfile = fopen('.\logs\CounterCheck\Auto\Slow\log63kHz.log');
+logfile = fopen('.\logs\CounterCheck\Auto\Slow\test.log');
 M = textscan(logfile,'%s');
 fclose(logfile);
 
