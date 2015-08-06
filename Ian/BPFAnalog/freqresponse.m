@@ -38,3 +38,7 @@ vdBnorm = 20*log10(v / max(v));
 
 figure;
 semilogx(f, vdBnorm);
+title('Frequency response of Analog Bandpass Filter', 'fontweight', 'bold');
+xlabel('Frequency (Hz)');
+ylabel('Gain (dB)');
+grid on;
