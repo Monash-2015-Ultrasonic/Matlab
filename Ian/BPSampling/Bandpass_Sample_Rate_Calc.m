@@ -19,13 +19,14 @@
 
 clear all; close all; clc;
 
-Bw = 12E3; % Analog signal bandwidth in Hz
-Fc = 40E3; % Analog signal center freq in Hz
+Bw = (43.2-38.1)*10^3; % Analog signal bandwidth in Hz
+Fc = 40.5E3; % Analog signal center freq in Hz
 
 % ##############################################
 % Define an Fs sample rate value below
 
-Fs = 65E6 / (2^10); % Selected Fs sample rate in Hz
+Fs = 70E6 / (2^10); % Selected Fs sample rate in Hz
+
 % ##############################################
 
 disp(' '), disp(['Analog Center Freq = ',num2str(Fc),' Hz.'])
