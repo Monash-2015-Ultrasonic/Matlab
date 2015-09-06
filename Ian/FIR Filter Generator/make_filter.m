@@ -13,8 +13,8 @@ function [t x]=make_filter(filename,Ts,f0)
 pulse_file=open(filename); % Open file
 
 % Pulse data
-tt=pulse_file.t;
-xx=pulse_file.x;
+tt=pulse_file.tt;
+xx=pulse_file.xx;
 
 T_pulse=tt(2)-tt(1);
 

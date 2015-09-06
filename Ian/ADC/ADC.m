@@ -10,8 +10,9 @@ tsig = 1/fsig;
 BW = (4.38-3.76)*1E4;
 %% Import log data
 
-logfile = fopen('./logs/System/Burst/3x/100cm/test.log');
+%logfile = fopen('./logs/System/Burst/3x/100cm/test.log');
 %logfile = fopen('./logs/System/Square/625kHz/Burst/logBurst.log');
+logfile = fopen('./test.log');
 M = textscan(logfile,'%s');
 fclose(logfile);
 clear logfile;
